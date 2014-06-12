@@ -9,4 +9,4 @@ def index(request):
     # if request.user.is_authenticated():
     #     return redirect('profile')
 
-    return render(request, 'index.html')
+    return render(request, 'home.html')

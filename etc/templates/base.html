@@ -11,17 +11,19 @@
   </head>
 
   <body ng-app="etcApp">
+    <div class="container">
 
         {% include "external.html" %}
 
-        {% block header %}{% endblock %}
+        {% block header %}
+        {% include "header.html" %}
+        {% endblock %}
 
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
 
         {% block footer %}
-        <div class="footer">
-          <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-        </div>
+        {% include "footer.html" %}
         {% endblock %}
 
         {% block javascript %}
@@ -33,5 +35,6 @@
         <script src="{{ STATIC_URL}}scripts/scripts.js"></script>
         {% endblock %}
 
+      </div>
 </body>
 </html>
