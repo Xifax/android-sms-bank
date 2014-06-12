@@ -1,37 +1,27 @@
 """
 Django settings for smsbank project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+# Initialize secret key for production
+try:
+    from spec.prod.secret import SECRET_KEY
+except:
+    pass
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+# Disable debug by default
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', '')
-
-if not SECRET_KEY:
-    try:
-        with open('key', 'r') as key:
-            SECRET_KEY = key.read().strip()
-    except:
-        pass
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
+# Allowed hosts list
+ALLOWED_HOSTS = [
+    'http://ec2-54-187-230-223.us-west-2.compute.amazonaws.com/',
+    '54.187.230.223',
+    'localhost'
+]
 
 
 # Application definition
@@ -84,15 +74,13 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
 
-# https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-STATIC_ROOT
 STATIC_ROOT = os.path.join(BASE_DIR, 'etc/static_collected')
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'etc/static'),
+    os.path.join(BASE_DIR, 'etc/dist'),
 )
 
 TEMPLATE_DIRS = (
@@ -100,3 +88,9 @@ TEMPLATE_DIRS = (
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'etc/uploads')
+
+# Initialize local settings
+try:
+    from spec.local.settings import *
+except ImportError:
+    pass
