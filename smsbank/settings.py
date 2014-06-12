@@ -27,12 +27,14 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gunicorn',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,6 +60,12 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# Try to use production settings
+try:
+    from spec.prod.settings import DATABASES
+except:
+    pass
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -88,6 +96,14 @@ TEMPLATE_DIRS = (
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'etc/uploads')
+
+# Additional context processors
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
+
 
 # Initialize local settings
 try:

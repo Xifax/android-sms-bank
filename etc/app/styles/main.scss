@@ -1,7 +1,14 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
+
+/* Use custom bootswatch themes */
+@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/variables";
+@import "bootswatch-scss/simplex/variables";
+@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/bootstrap";
+@import "bootswatch-scss/simplex/bootswatch";
+
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 
 .browsehappy {
   margin: 0.2em 0;
