@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gunicorn',
-    'hive',
+    'smsbank.apps.hive',
 )
 
 MIDDLEWARE_CLASSES = (

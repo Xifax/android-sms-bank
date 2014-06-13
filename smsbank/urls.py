@@ -5,7 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'smsbank.views.landing', name='landing'),
-    url(r'^hive/', include('hive.urls')),
+    url(r'^hive/', include('smsbank.apps.hive.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 )
