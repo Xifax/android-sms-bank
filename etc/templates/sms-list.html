@@ -1,0 +1,40 @@
+<!-- Additional info -->
+<div class="bs-callout bs-callout-info">
+    <h4>Информация о всех смс отправленных с данного устройства</h4>
+    <p>NB: иногда вместо номера может отображаться зарегистрированное имя</p>
+</div>
+
+<!-- SMS list -->
+<div class="panel panel-default">
+
+  <!-- Table header and additional info -->
+  <div class="panel-heading">
+    SMS sent from <strong>{{ grunt }}</strong>
+  </div>
+  <div class="panel-body">
+    <p>Total SMS: <strong>{{sms_sent|length}}</strong></p>
+    <p>Latest SMS: <strong>{{sms_sent.0.date}}</strong></p>
+  </div>
+
+  <!-- SMS list -->
+  <table class="table table-hover table-striped table-bordered">
+    <thead>
+          <tr>
+            <th>#</th>
+            <th>Phone</th>
+            <th>Message</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+    {% for sms in sms_sent %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ sms.number }} </td>
+      <td>{{ sms.body }} </td>
+      <td>{{ sms.date }} </td>
+    </tr>
+    {% endfor %}
+
+  </table>
+
+</div>

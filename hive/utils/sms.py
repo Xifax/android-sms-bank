@@ -13,7 +13,10 @@ class Sms:
 
     def send(self, phone, message):
         try:
-            r = requests.post(self.url, data={phone: phone, message: message})
+            r = requests.post(
+                self.url,
+                data={'phone': phone, 'message': message}
+            )
             result = r.json()
             return result['status'] == 'success'
         except requests.exceptions.RequestException as e:

@@ -2,39 +2,12 @@
 
 {% block content %}
 
-<div class="panel panel-default">
+<!-- Sub-navigation -->
+<ul class="nav nav-tabs nav-justified">
+  <li class="active"><a href="{% url 'grunt' grunt %}">List SMS</a></li>
+  <li><a href="{% url 'send-sms' grunt %}">New SMS</a></li>
+</ul>
 
-  <!-- Table header and additional info -->
-  <div class="panel-heading">
-    SMS sent from <strong>{{ grunt }}</strong>
-  </div>
-  <div class="panel-body">
-    <p>Total SMS: <strong>{{sms_sent|length}}</strong></p>
-    <p>Latest SMS: <strong>{{sms_sent.0.date}}</strong></p>
-  </div>
-
-  <!-- SMS list -->
-  <table class="table table-hover table-striped table-bordered">
-    <thead>
-          <tr>
-            <th>#</th>
-            <th>Phone</th>
-            <th>Message</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-    {% for sms in sms_sent %}
-    <tr>
-      <td>{{ forloop.counter }}</td>
-      <td>{{ sms.number }} </td>
-      <td>{{ sms.body }} </td>
-      <td>{{ sms.date }} </td>
-    </tr>
-    {% endfor %}
-
-  </table>
-
-</div>
-
+{% include "sms-list.html" %}
 
 {% endblock %}

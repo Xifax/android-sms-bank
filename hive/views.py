@@ -3,6 +3,8 @@ from django.shortcuts import render
 from utils.scanner import Scanner
 from utils.sms import Sms
 
+from forms import SMSForm
+
 ################
 # Landing page #
 ################
@@ -33,6 +35,31 @@ def grunt(request, grunt):
         'grunt.html',
         {'grunt': grunt, 'sms_sent': Sms(grunt).list()}
     )
+
+
+def send_sms(request, grunt):
+    """Send SMS via specified grunt"""
+    sms_sent = False
+    error_message = False
+
+    if request.method == 'POST':
+        form = SMSForm(data=request.POST)
+        if form.is_valid():
+            sms_sent = Sms(grunt).send(
+                form.cleaned_data['phone'],
+                form.cleaned_data['message'],
+            )
+        else:
+            error_message = 'Invalid data provided'
+    else:
+        form = SMSForm()
+
+    return render(request, 'sms-send.html', {
+        'grunt': grunt,
+        'form': form,
+        'sms_sent': sms_sent,
+        'error_message': error_message,
+    })
 
 
 ##############
