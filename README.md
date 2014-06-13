@@ -1,5 +1,7 @@
 Android SMS bank web frontend
 -----------------------------
+Web application for managing multiple android devices on local network
+via http requests.
 
 ## About directory structure:
 
