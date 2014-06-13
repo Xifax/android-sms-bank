@@ -13,17 +13,17 @@
   <body ng-app="etcApp">
     <div class="container">
 
-        {% include "external.html" %}
+        {% include "layout/external.html" %}
 
         {% block header %}
-        {% include "header.html" %}
+        {% include "layout/header.html" %}
         {% endblock %}
 
         {% block content %}
         {% endblock %}
 
         {% block footer %}
-        {% include "footer.html" %}
+        {% include "layout/footer.html" %}
         {% endblock %}
 
         {% block javascript %}
@@ -31,6 +31,7 @@
         <script src="bower_components/es5-shim/es5-shim.js"></script>
         <script src="bower_components/json3/lib/json3.min.js"></script>
         <![endif]-->
+
         <script src="{{ STATIC_URL}}scripts/vendor.js"></script>
         <script src="{{ STATIC_URL}}scripts/scripts.js"></script>
         {% endblock %}

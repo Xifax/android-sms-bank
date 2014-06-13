@@ -39,7 +39,9 @@
     </label>
     {{ form.message }}
   </div>
-  <input type="submit" value="Отправить" />
+  <input class="btn {% if not form.phone.errors and not form.message.errors %}
+    btn-success {% else %} btn-default {% endif %}"
+    type="submit" value="Отправить" />
 </form>
 
 {% endblock %}

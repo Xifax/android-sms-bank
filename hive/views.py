@@ -24,7 +24,7 @@ def grunts(request):
     """Display device list"""
     return render(
         request,
-        'grunts.html',
+        'devices/grunts.html',
         {'grunts': Scanner().scan()}
     )
 
@@ -33,7 +33,7 @@ def grunt_list(request, grunt):
     """Display device sms list and controls"""
     return render(
         request,
-        'grunt.html',
+        'devices/grunt.html',
         {'grunt': grunt, 'sms_sent': Sms(grunt).list()}
     )
 
@@ -55,7 +55,7 @@ def grunt_send(request, grunt):
     else:
         form = SMSForm()
 
-    return render(request, 'sms-send.html', {
+    return render(request, 'devices/sms-send.html', {
         'grunt': grunt,
         'form': form,
         'sms_sent': sms_sent,
