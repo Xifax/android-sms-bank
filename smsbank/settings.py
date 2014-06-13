@@ -27,6 +27,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = (
+    'smsbank.common',
     'suit',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -35,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gunicorn',
+    'hive',
 )
 
 MIDDLEWARE_CLASSES = (
