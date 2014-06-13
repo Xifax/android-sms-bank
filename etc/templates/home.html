@@ -3,10 +3,13 @@
 {% block content %}
 
       <div class="jumbotron">
-        <h1>SMS Hive</h1>
-        <p class="lead">Welcome to android SMS botnet! Prepare to be assimilated.</p>
-        <p><a class="btn btn-primary" href="{% url 'grunts' %}" role="button">Gotta send some SMS</a></p>
-        <p>Please note, that every scan will take quite some time due to lack of persistence.</p>
+        <h1>СМС Банк</h1>
+        <p class="lead">Добро пожаловать в интерфейс управления <strong>С.У.М.Р.</strong> (смс устройствами массовой рассылки)!</p>
+        <p>
+          <a class="btn btn-primary" href="{% url 'grunts' %}" role="button">Войти</a>
+          <a class="btn btn-primary" href="{% url 'grunts' %}" role="button">Регистрация</a>
+        </p>
+        <p>Если вы администратор, то вам <a href="{% url 'admin:index' %}">сюда</a></p>
       </div>
 
 {% endblock %}

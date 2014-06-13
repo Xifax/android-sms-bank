@@ -9,11 +9,11 @@
 
   <!-- Table header and additional info -->
   <div class="panel-heading">
-    SMS sent from <strong>{{ grunt }}</strong>
+    СМС отправленные с устройства <strong>{{ grunt }}</strong>
   </div>
   <div class="panel-body">
-    <p>Total SMS: <strong>{{sms_sent|length}}</strong></p>
-    <p>Latest SMS: <strong>{{sms_sent.0.date}}</strong></p>
+    <p>Всего СМС: <strong>{{sms_sent|length}}</strong></p>
+    <p>Последняя СМС: <strong>{{sms_sent.0.date}}</strong></p>
   </div>
 
   <!-- SMS list -->
@@ -21,9 +21,9 @@
     <thead>
           <tr>
             <th>#</th>
-            <th>Phone</th>
-            <th>Message</th>
-            <th>Date</th>
+            <th>Телефон</th>
+            <th>Сообщение</th>
+            <th>Дата</th>
           </tr>
         </thead>
     {% for sms in sms_sent %}

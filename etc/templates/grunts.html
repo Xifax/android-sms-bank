@@ -4,19 +4,29 @@
 
 <div class="panel panel-default">
 
-  <div class="panel-heading">Available grunts</div>
+  <div class="panel-heading">Доступные устройства</div>
   <div class="panel-body">
-    <p>Grunts found @<strong>192.168.1.0/24</strong>, port 8080</p>
+    <p>
+    Обнаружены в сети @<strong>192.168.1.0/24</strong>,
+    порт <strong>8080</strong>
+    </p>
   </div>
 
   <ul class="list-group">
 
     {% for grunt in grunts %}
-    <a href="{% url 'grunt-list' grunt %}" class="list-group-item">
-        <span class="badge alert-success">online</span>
+    <a href="{% url 'grunt-list' grunt %}" class="list-group-item"
+      title="Отобразить список отправленных смс">
+        <span class="badge alert-success">доступно</span>
         {{ grunt }}
       </a>
     {% endfor %}
+
+    {% if not grunts %}
+    <li class="list-group-item list-group-item-danger">
+      Устройств не обнаружено
+    </li>
+    {% endif %}
 
   </ul>
 

@@ -6,7 +6,7 @@
           </li>
 
           {% url 'grunts' as url %}
-          <li {% if request.path == url %} class="active" {% endif %}%>
+          <li {% if request.path == url or 'grunt' in request.path %} class="active" {% endif %}%>
             <a href="{{ url }}">Устройства</a>
           </li>
 
@@ -16,5 +16,5 @@
           </li>
 
         </ul>
-        <h3 class="text-muted">SMS Hive</h3>
+        <h3 class="text-muted">СМС Банк</h3>
       </div>
