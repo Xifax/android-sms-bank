@@ -3,19 +3,21 @@
 {% block content %}
 
 <div class="panel panel-default">
+
   <div class="panel-heading">Available grunts</div>
   <div class="panel-body">
-    <p>Grunts found @<strong>192.168.0.1/24</strong>, port 8080</p>
+    <p>Grunts found @<strong>192.168.1.0/24</strong>, port 8080</p>
   </div>
 
   <ul class="list-group">
-  {% for grunt in grunts %}
-    <!-- TODO: add status -->
-    <a href="#" class="list-group-item">
-      <span class="badge">online</span>
-      {{ grunt }}
-    </a>
-  {% endfor %}
+
+    {% for grunt in grunts %}
+    <a href="{% url 'grunt' grunt %}" class="list-group-item">
+        <span class="badge alert-success">online</span>
+        {{ grunt }}
+      </a>
+    {% endfor %}
+
   </ul>
 
 </div>

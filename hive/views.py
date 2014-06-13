@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from utils.scanner import Scanner
+from utils.sms import Sms
 
 ################
 # Landing page #
@@ -17,8 +18,21 @@ def index(request):
 
 
 def grunts(request):
-    grunts = Scanner().scan()
-    return render(request, 'grunts.html', {'grunts': grunts})
+    """Display device list"""
+    return render(
+        request,
+        'grunts.html',
+        {'grunts': Scanner().scan()}
+    )
+
+
+def grunt(request, grunt):
+    """Display device sms list and controls"""
+    return render(
+        request,
+        'grunt.html',
+        {'grunt': grunt, 'sms_sent': Sms(grunt).list()}
+    )
 
 
 ##############
@@ -27,4 +41,5 @@ def grunts(request):
 
 
 def info(request):
+    """Display application info"""
     return render(request, 'about.html')

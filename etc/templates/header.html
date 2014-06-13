@@ -2,17 +2,17 @@
         <ul class="nav nav-pills pull-right">
           {% url 'index' as url %}
           <li {% if request.path == url %} class="active" {% endif %}%>
-            <a href="{% url 'index' %}">Заглавная</a>
+            <a href="{{ url }}">Заглавная</a>
           </li>
 
           {% url 'grunts' as url %}
           <li {% if request.path == url %} class="active" {% endif %}%>
-            <a href="{% url 'grunts' %}">Устройства</a>
+            <a href="{{ url }}">Устройства</a>
           </li>
 
           {% url 'info' as url %}
           <li {% if request.path == url %} class="active" {% endif %}%>
-            <a href="{% url 'info' %}">Информация</a>
+            <a href="{{ url }}">Информация</a>
           </li>
 
         </ul>

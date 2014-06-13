@@ -7,11 +7,15 @@ urlpatterns = patterns(
     '',
     # Landing
     url(r'^$', views.index, name='index'),
-    # Device list
+
+    # Working with devices
     url(r'^grunts/', views.grunts, name='grunts'),
+    url(r'^grunt/(?P<grunt>[a-zA-Z0-9.]+)/', views.grunt, name='grunt'),
     # url(r'^sms/', views.sms, name='sms'),
+
     # Additional
     url(r'^info/', views.info, name='info'),
+
     # Auth
     # url(r'^login/', views.login, name='login'),
     # url(r'^register/', views.register, name='register'),

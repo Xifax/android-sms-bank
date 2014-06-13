@@ -23,6 +23,7 @@ class Sms:
     def list(self):
         try:
             r = requests.get(self.url)
+            r.encoding = 'utf-8'
             return r.json()
         except requests.exceptions.RequestException as e:
             print e.getMessage()
