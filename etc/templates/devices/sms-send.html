@@ -23,7 +23,7 @@
 {% endif %}
 
 
-<form role="form" action="{% url 'grunt-send' grunt %}"
+<form role="form" action="{% url 'grunt-send' grunt %}" class="well"
   method="post">
   {% csrf_token %}
   {{ form.non_field_errors}}
