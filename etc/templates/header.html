@@ -1,8 +1,20 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Заглавная</a></li>
-          <li><a href="#">Информация</a></li>
-          <!-- <li><a href="#">Контакты</a></li> -->
+          {% url 'index' as url %}
+          <li {% if request.path == url %} class="active" {% endif %}%>
+            <a href="{% url 'index' %}">Заглавная</a>
+          </li>
+
+          {% url 'grunts' as url %}
+          <li {% if request.path == url %} class="active" {% endif %}%>
+            <a href="{% url 'grunts' %}">Устройства</a>
+          </li>
+
+          {% url 'info' as url %}
+          <li {% if request.path == url %} class="active" {% endif %}%>
+            <a href="{% url 'info' %}">Информация</a>
+          </li>
+
         </ul>
         <h3 class="text-muted">SMS Hive</h3>
       </div>
