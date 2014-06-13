@@ -12,7 +12,7 @@
   <ul class="list-group">
 
     {% for grunt in grunts %}
-    <a href="{% url 'grunt' grunt %}" class="list-group-item">
+    <a href="{% url 'grunt-list' grunt %}" class="list-group-item">
         <span class="badge alert-success">online</span>
         {{ grunt }}
       </a>

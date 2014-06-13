@@ -1,3 +1,4 @@
+# coding: utf-8
 from django.shortcuts import render
 
 from utils.scanner import Scanner
@@ -28,7 +29,7 @@ def grunts(request):
     )
 
 
-def grunt(request, grunt):
+def grunt_list(request, grunt):
     """Display device sms list and controls"""
     return render(
         request,
@@ -37,7 +38,7 @@ def grunt(request, grunt):
     )
 
 
-def send_sms(request, grunt):
+def grunt_send(request, grunt):
     """Send SMS via specified grunt"""
     sms_sent = False
     error_message = False
@@ -50,7 +51,7 @@ def send_sms(request, grunt):
                 form.cleaned_data['message'],
             )
         else:
-            error_message = 'Invalid data provided'
+            error_message = u'Указаны неверные данные'
     else:
         form = SMSForm()
 
