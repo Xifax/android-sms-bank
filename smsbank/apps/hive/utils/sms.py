@@ -20,7 +20,7 @@ class Sms:
             result = r.json()
             return result['status'] == 'success'
         except requests.exceptions.RequestException as e:
-            print e.getMessage()
+            print e
             return False
 
     def list(self):
@@ -29,5 +29,5 @@ class Sms:
             r.encoding = 'utf-8'
             return r.json()
         except requests.exceptions.RequestException as e:
-            print e.getMessage()
+            print e
             return []

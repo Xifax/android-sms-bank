@@ -1,11 +1,6 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
 
-          <!-- {% url 'index' as url %} -->
-          <!-- <li {% if request.path == url %} class="active" {% endif %}%> -->
-          <!--   <a href="{{ url }}">Заглавная</a> -->
-          <!-- </li> -->
-
           {% url 'grunts' as url %}
           <li {% if request.path == url or 'grunt' in request.path %} class="active" {% endif %}%>
             <a href="{{ url }}">Устройства</a>
@@ -23,5 +18,9 @@
           {% endif %}
 
         </ul>
-        <h3 class="text-muted">СМС Банк</h3>
+        <h3 class="text-muted">СМС Банк
+          {% if user.is_authenticated %}
+            ({{ user.username }})
+          {% endif %}
+        </h3>
       </div>

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Device(models.Model):
     """Android device on the internal network"""
-    ip = models.GenericIPAddressField()
+    ip = models.GenericIPAddressField(unique=True)
     online = models.NullBooleanField(default=False, blank=True)
 
     class Meta:

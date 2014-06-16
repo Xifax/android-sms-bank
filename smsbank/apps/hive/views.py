@@ -11,7 +11,7 @@ from utils.scanner import Scanner
 from utils.sms import Sms
 
 from forms import SMSForm, CustomAuthForm, CustomRegisterForm
-from models import Profile
+from models import Profile, Device
 
 ################
 # Landing page #
@@ -108,10 +108,22 @@ def grunts(request):
     if not request.user.is_authenticated():
         return redirect('index')
 
+    # Get device list available for this user
+    try:
+        profile = request.user.profile.get()
+        devices = profile.devices.all()
+
+    # If admin, re-scan device list
+    except Profile.DoesNotExist:
+        devices = Device.objects.all()
+        if not devices:
+            Scanner().scan(persist=True)
+            devices = Device.objects.all()
+
     return render(
         request,
         'devices/grunts.html',
-        {'grunts': Scanner().scan()}
+        {'grunts': devices}
     )
 
 

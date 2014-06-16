@@ -15,10 +15,14 @@
   <ul class="list-group">
 
     {% for grunt in grunts %}
-    <a href="{% url 'grunt-list' grunt %}" class="list-group-item"
+    <a href="{% url 'grunt-list' grunt.ip %}" class="list-group-item"
       title="Отобразить список отправленных смс">
-        <span class="badge alert-success">доступно</span>
-        {{ grunt }}
+        {% if grunt.online %}
+          <span class="badge alert-success">доступно</span>
+        {% else %}
+          <span class="badge alert-danger">недоступно</span>
+        {% endif %}
+          {{ grunt.ip }}
       </a>
     {% endfor %}
 
